@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<title>Edit Profile</title>
+{% endblock %}
+	
+{% block content %}
+          <div class="contacts">
+            <form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+             <div class="profile">
+                          <img src="{{ request.user.profile.thumbnail.url }}" alt="Profile Picture" class="profile-img">
+                          <p>{{ request.user.username }}</p>
+						  {{ form.as_p }}
+               
+               <button class="profile-btn" >Save edit</button>
+          </div>
+        </form>       
+            
+        </div>
+{% endblock %}   

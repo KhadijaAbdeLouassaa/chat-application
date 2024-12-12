@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<title>Home</title>
+{% endblock %}
+	
+{% block content %}
+
+<div class="contacts">
+    <ul>
+	{% if friends %}
+		{% for friend in friends %}
+		{% if friend.follower == request.user %}
+        <li class="contact">
+		
+			<a href="{% url 'chats:chat_detail' friend.following.username %}" style="text-decoration: none;">
+				<div class="wrap">
+				<div class="contact-info">
+					<img src="{{friend.following.profile.thumbnail.url}}" alt="Friend 1">
+					{% if friend.following.profile.get_online_status %}
+					<span class="online-status"></span>
+					{% endif %}
+					</div>
+					<div class="meta">
+						<p class="name">{{friend.following.username}}</p>
+						<p class="preview">{{friend.last_message_added.message|slice:'0:25'}}</p>
+					</div>
+					{% if not friend.unread_msg == 0  %}
+					<span class="friend-badge">{{friend.unread_msg}}</span>
+					{% endif %}
+				</div>
+			</a>
+		
+		</li>
+		{% else %}
+		<li class="contact">
+		
+			<a href="{% url 'chats:chat_detail' friend.follower.username %}" style="text-decoration: none;">
+				<div class="wrap">
+				<div class="contact-info">
+					<img src="{{friend.follower.profile.thumbnail.url}}" alt="Friend 1">
+					{% if friend.follower.profile.get_online_status %}
+					<span class="online-status"></span>
+					{% endif %}
+					</div>
+					<div class="meta">
+						<p class="name">{{friend.follower.username}}</p>
+						<p class="preview">{{friend.last_message_added.message|slice:'0:25'}}</p>
+					</div>
+					{% if not friend.unread_msg == 0  %}
+					<span class="friend-badge">{{friend.unread_msg}}</span>
+					{% endif %}
+				</div>
+			</a>
+		
+		</li>
+		{% endif %}
+		{% endfor %}
+	{% else %}
+		<h6>no friends yet </h6> 
+		
+	{% endif %}
+		
+        
+    </ul>
+</div>
+
+{% endblock %}

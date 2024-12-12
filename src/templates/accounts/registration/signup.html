@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<form method="POST"> 
+	{% csrf_token %}
+    <div class="frame">
+                
+        <div class="login">
+            <div class= "login-title">Sign up</div>
+			
+			{% if form.errors %}
+				{% for field in form %}
+				{% if field.errors %}
+				<div class = "alert alert-danger " role = "alert">
+				
+				{{field.errors.0|escape}}
+				</div>
+				{% endif %}
+				{% endfor %}
+			
+			{% endif %}
+			
+			
+			
+			
+			
+            <label for="id_username">Username</label>
+            {{form.username}}
+               
+            <label for="id_email">Email</label>
+            {{form.email}}
+			
+            <label for="id_password">Password</label>
+            {{form.password1}}
+			
+            <label for="id_confirm_password">Confirm Password</label>
+            {{form.password2}}
+                 
+            <button class="login-btn" type="submit">Signup</button>
+                 <p class="login-link">you already have an acount? <a href="{% url 'accounts:login' %}" >Login</a></p>
+        </div>
+    </div>
+</form>   
+   
+</body>
+</html>

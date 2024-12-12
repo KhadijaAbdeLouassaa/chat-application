@@ -1,0 +1,388 @@
+/* General Styling */
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f7f6;
+    
+}
+
+.frame {
+    width: 100%;
+    height: 100vh;
+    background-color: #E6EAEA;
+    display: flex;
+    justify-content: center;
+    
+	align-items: flex-start; 
+}
+
+
+/*----------------- Contacts Area -----------------*/
+
+.contacts-area {
+    width: 400px;
+	max-width: 400px; 
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: #2c3e50;
+	margin-top: 20px; 
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+	position: relative;
+}
+
+.action-buttons button {
+    background-color: #34495e;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+	position: relative;
+}
+
+.action-buttons button:hover {
+    background-color: #3d566e;
+}
+
+.badge {
+    background-color: #005f7a;
+    padding: 3px 7px; 
+    font-size: 12px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px; 
+    right: -10px; 
+    display: inline-block;
+    text-align: center;
+}
+
+
+.search {
+    padding: 10px;
+    background: #34495e;
+    text-align: center;
+}
+
+.search input {
+    width: 96%;
+    padding: 10px 6px;
+    border-radius: 5px;
+    border: none;
+    background: #f1f1f1;
+    
+}
+
+/*----------------- Contacts List -----------------*/
+
+.contacts {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.contacts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact {
+    padding: 1px 15px;
+    position: relative;
+    cursor: pointer;
+	
+}
+
+.contact:hover {
+    background-color: #3d566e;
+}
+
+.contact .wrap {
+    display: flex;
+    align-items: center;
+	position: relative;
+}
+.contact-info {
+    position: relative; 
+    display: flex;
+    align-items: center;
+}
+
+
+.online-status {
+    width: 10px;
+    height: 10px;
+    background-color: #90EE90; 
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0; 
+    right: 15px; 
+    
+}
+.contact img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+	position: relative;
+}
+
+.contact .meta {
+    color: white;
+}
+
+.contact .name {
+    font-weight: bold;
+    margin-bottom: 5px;
+	display: block;
+}
+
+.contact .preview {
+    font-size: 12px;
+    color: #ddd;
+	
+}
+
+.contact .friend-badge {
+	
+	background-color: #005f7a;
+    padding: 3px 7px; 
+    font-size: 12px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px; 
+    top: 50%; 
+    display: inline-block;
+    text-align: center;
+}
+
+/*----------------- search.html -----------------*/
+
+.search-contact {
+    padding: 15px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.search-contact .wrap {
+    display: flex;
+    align-items: center;
+}
+
+.search-contact .wrap img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.search-contact .meta {
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-contact .name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.follow-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+}
+.unfollow-button{
+    background-color:#2c3e50;
+    border-color:#005f7a;
+    border-style : solid;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+}
+
+/*----------------- notification.html -----------------*/
+
+
+.notification-contact {
+    padding: 15px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.notification-contact .wrap {
+    display: flex;
+    align-items: center;
+}
+
+.notification-contact .wrap img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.notification-contact .meta {
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-contact .name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contacts h6 {
+    font-size: 16px;           
+    color: white;           
+    text-align: center;       
+    margin-top: 70px;          
+    padding: 10px;             
+}
+
+
+.accept-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    right: 100px;
+}
+
+.accept-button:hover {
+    background-color: #005f7a;
+}
+
+.remove-button {
+    background-color: #821131;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+}
+
+.remove-button:hover {
+    background-color: #800000;
+}
+
+.accepted-button {
+    background-color: #005f7a;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+}
+
+/*----------------- settings.html -----------------*/
+
+.settings {
+    padding: 60px;
+    text-align: center;
+    background-color: #2c3e50;
+    
+}
+
+.settings-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.settings p {
+    color: white;
+    margin: 10px 0 0 0;
+    margin-bottom:15px;
+}
+
+.settings-btn {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom:10px;
+}
+
+.settings-btn:hover {
+    background-color: #005f7a;
+}
+
+/*----------------- edit_profile.html -----------------*/
+
+
+.profile {
+    padding: 60px;
+    text-align: center;
+    background-color: #2c3e50;
+    
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+	
+}
+
+.profile p {
+    color: white;
+    margin: 10px 0 0 0;
+    margin-bottom:15px;
+}
+
+
+.profile-btn {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom:10px;
+}
+
+.profile-btn:hover {
+    background-color: #005f7a;
+}

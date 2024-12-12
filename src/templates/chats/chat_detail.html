@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="frame">
+        <div id="chat-area" class="content hidden">
+            <div class="chat-header">
+                <a href="{% url 'chats:chat' %}">
+                    <button id="back-button"><i class="fa fa-arrow-left"></i></button>
+                </a>
+                <div class="friend-info">
+                    <img id="chat-img" src="{{ friend.profile.thumbnail.url }}" alt="Friend's Image" class="friend-img">
+                    {% if friend.profile.get_online_status %}
+                        <span class="online-status"></span>
+                    {% endif %}
+                </div>
+                <p id="chat-name">{{ friend }}</p>
+            </div>
+            <div class="messages">
+			{% for message in messages %}
+			
+				<ul>
+					<li class="
+							{% if message.sender == request.user %}
+							sent
+							{% else %}
+							replies
+							{% endif %}
+
+					"> 
+						<p>  {{message.message}}  </p> 
+						<span class="chat-time right">  {{message.timestamp|date:'h:i A'}}  </span> 
+					</li>
+        
+				</ul>
+			{% endfor %}
+                <ul id="id_content">
+				</ul>
+            </div>
+            <div class="message-input">
+                <input type="text" id="id_message_send_input" placeholder="Write a message...">
+                <button type="submit" id="id_message_send_button"><i class="fa fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/" + "{{ friend }}/");
+
+    chatSocket.onopen = function(e) {
+        console.log("The connection was set up successfully!");
+    };
+
+    chatSocket.onclose = function(e) {
+        console.log("Something unexpected happened!");
+    };
+
+    document.getElementById('id_message_send_input').focus();
+    document.getElementById('id_message_send_input').onkeyup = function(e) {
+        if (e.keyCode === 13) {
+            document.getElementById('id_message_send_button').click();
+        }
+    };
+
+    const sendButton = document.getElementById('id_message_send_button');
+    sendButton.addEventListener('click', function(e) {
+        const message = document.getElementById('id_message_send_input').value;
+        if (message) {
+			const time = new Date().toLocaleTimeString("en-US", {
+				hour: '2-digit',
+				minute: '2-digit',
+				hour12: true,
+				timeZone: 'GMT',
+			});
+
+            chatSocket.send(JSON.stringify({
+                'sender': "{{ request.user.username }}",  
+				'receiver': "{{ friend }}",
+                'message': message,
+                'time': time,
+            }));
+            document.getElementById('id_message_send_input').value = "";  
+        }
+    });
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        var isUser = (data.sender === "{{ request.user.username }}");  
+        var chat = document.getElementById('id_content');
+        const source = isUser ? 'sent' : 'replies';
+        
+        chat.innerHTML += 
+            '<li class="' + source + '">' +
+            '<p>' + data.message + '</p>' +
+            '<span class="chat-time right">' + data.time + '</span>' +
+            '</li>';
+        
+        chat.scrollTop = chat.scrollHeight ;
+    };
+    </script>
+</body>
+</html>

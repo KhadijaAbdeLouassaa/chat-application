@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<title>Settings</title>
+{% endblock %}
+	
+{% block content %}
+
+<div class="contacts">
+	{% for item in user_profile %}
+	<div class="settings">
+		<img src="{{item.thumbnail.url}}" alt="settings Picture" class="settings-img">
+		<p>{{item.user.username}}</p>
+		
+		<a href= "{% url 'accounts:edit_profile' %}"><button class="settings-btn" >Edit Profile</button></a>
+	
+		<a href= "{% url 'accounts:logout' %}"><button class="settings-btn"><i class="fa fa-arrow-left"></i> Logout</button></a>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}       

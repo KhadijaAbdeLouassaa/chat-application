@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<title>Notification</title>
+{% endblock %}
+	
+{% block content %} 
+<div class="contacts">
+    <ul>
+	{% if followers %}
+		{% for follower in followers %}
+        <li class="notification-contact">
+            <div class="wrap">
+                <img src="{{follower.follower.profile.thumbnail.url}}" alt="Friend 1">
+                <div class="meta">
+                    <p class="name">{{follower.follower.username}}</p>
+                    
+                </div>
+              
+                <a href="{% url 'friends:accept_follower' follower.follower.username %}"><button class="accept-button" >accept</button></a>
+              <a href="{% url 'friends:remove_follower' follower.follower.username %}"><button class="remove-button" >remove</button></a>
+            </div>
+        </li>
+		{% endfor %}
+	{% else %}
+		<h6>no notifications yet </h6> 
+		
+	{% endif %}
+        
+    </ul>
+</div>
+{% endblock %}
+{% block script %}
+
+<script>
+let acceptButtons = document.querySelectorAll('.accept-button');
+let removeButtons = document.querySelectorAll('.remove-button');
+
+acceptButtons.forEach(function(acceptBtn, index) {
+    let removeBtn = removeButtons[index];  
+
+    acceptBtn.addEventListener('click', function() {                                  
+        acceptBtn.textContent = 'accepted';
+        acceptBtn.className = 'accepted-button';
+        removeBtn.remove(); 
+    });
+});
+</script>	
+{% endblock %}   

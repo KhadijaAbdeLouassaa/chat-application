@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Search</title>
+{% endblock %}
+
+{% block content %}
+<form method="GET">
+    <div class="search">
+        <input type="text" name="q" placeholder="Search contacts...">
+    </div>
+</form>
+<div class="contacts">
+    <ul>
+		{% if friends %}
+        {% for friend in friends %}
+        <li class="search-contact">
+            <div class="wrap">
+                <img src="{{ friend.thumbnail.url}}" alt="Friend 1">
+                <div class="meta">
+                    <p class="name">{{ friend.user.username }}</p>
+                </div>
+                {% if friend.user.id in accepted_friends %}
+                    <a href="{% url 'friends:unfollow' friend.user.username %}"><button class="unfollow-button">following</button></a>
+                {% else %}
+				
+                    <a href="{% url 'friends:follow' friend.user.username %}"><button class="follow-button">follow</button></a>
+			
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+	{% else %}
+		<h6> not found ! </h6> 
+		
+	{% endif %}
+        
+    </ul>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+
+let buttons = document.querySelectorAll('.follow-button, .unfollow-button');
+
+buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        if (btn.textContent === 'follow') {
+            btn.textContent = 'following';
+            btn.classList.replace('follow-button', 'unfollow-button');
+        } 
+		else {
+            btn.textContent = 'follow';
+            btn.classList.replace('unfollow-button', 'follow-button');
+        }
+    });
+});
+</script>
+{% endblock %}
+
