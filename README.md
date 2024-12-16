@@ -35,7 +35,7 @@ env\scripts\activate
 ```
 4. Install requirements:
 ```
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 5. Migrate Database:
 ```
