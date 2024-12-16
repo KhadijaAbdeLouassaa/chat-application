@@ -22,7 +22,7 @@ this is a friendly chat application build using django . it allows you to send a
 # Installation:
 1. Clone the repository:
 ```
-git clone https://github.com/user/repo.git
+https://github.com/KhadijaAbdeLouassaa/chat-application.git
 ```
 2. Create virtual environment:
 ```
