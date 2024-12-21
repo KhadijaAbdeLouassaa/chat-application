@@ -3,11 +3,11 @@ this is a friendly chat application build using django . it allows you to send a
 # Features:
 - user authentication(signup, login, logout, reset password)
 - manage user profile(change user thumbnail)
-- send message, receiver message
-- notification for new messages
+- send message, receive message
+- messages notification
 - search for friend 
-  uFollow friend
-- Unfollow friend
+  follow friend
+- unfollow friend
 - notification for request friend
 - accept request friend
 - delete request friend
