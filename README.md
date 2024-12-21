@@ -1,5 +1,5 @@
 # Django chat pplication:
-this is a friendly chat application build using django . it allows you to send and receiver messages with your friends as you like.
+this is a friendly chat application build using django . it allows you to send and receive messages with your friends as you like.
 # Features:
 - user authentication(signup, login, logout, reset password)
 - manage user profile(change user thumbnail)
