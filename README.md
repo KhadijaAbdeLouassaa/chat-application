@@ -46,13 +46,13 @@ py manage.py migrate
 ```
 py manage.py runserver
 ```
-## home page :
+### Home page :
 ![1](PREVIEW/home.PNG)
-## chats page :
+### Chats page :
 ![1](PREVIEW/chats.PNG)
-## search page :
+### Search page :
 ![1](PREVIEW/search.PNG)
-## notification page :
+### Notification page :
 ![1](PREVIEW/notifications.PNG)
-## settings page :
+### Settings page :
 ![1](PREVIEW/settings.PNG)
